@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="indexstyle.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+	<title>Zac's Page</title>
+</head>
+<body>
+<body class="container">
+<div id="header"></div>
+<script>
+    $(function () { // This doesn't work unless it is hosted by a http server
+        $("#header").load("header.html");
+    })
+</script>
+<div class="jumbotron">
+    <h2 <p class="text-left text-dark display-3"><strong>Computational Science</strong></h2>
+    <p class="lead"><em>Use of computer science to create models and simulations has paved
+		the way for considerable advancements in science and engineering.</em></p>
+</div>
+<div class="card">
+    <div class="card-body">
+		<p class="mb-0">Not to be confused with computer science, computational science is
+			the application of computer science and software engineering principles to solve scientific problems.</p>
+    </div>
+</div>
+</body>
+</html>
