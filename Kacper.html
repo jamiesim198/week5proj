@@ -8,21 +8,61 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="http://gsgd.co.uk/sandbox/jquery/easing/jquery.easing.1.3.js"></script>
     <title>Applications of computing</title>
 </head>
 <body class="container">
+<div id="potatoes"></div>
 <div id="header"></div>
 <script>
+    let spawned = false;
+    let ids = 0;
+
     $(function () { // This doesn't work unless it is hosted by a http server
-        $("#header").load("header.html", function(){
+        $("#header").load("header.html", function () {
             $("#kac").addClass("active")
         });
-    })
+        $("#title").dblclick(function () {
+            if (!spawned) {
+                spawned = true;
+                spawn();
+            }
+        })
+    });
+    spawn = function () {
+        console.log("spawning");
+        for (let i = 0; i <= 100; i++) {
+            spawn_pot()
+        }
+    };
+    spawn_pot = function () {
+        let current_id = ids++;
+        let start_x = Math.random() * ($(document).width() - 150);
+        let height = $(document).height();
+
+        let current = `<img id="pot_${current_id}" class="img-circle" style="z-index: 1;width:150px;height:100px;position: fixed;left:${start_x}px; top:-100px;" src="pot.png">`;
+
+        $("#potatoes").append(current);
+        let pot_element = $("#pot_" + current_id);
+        pot_element.delay(Math.random() * 2000).animate({"top": height}, 2000, "easeInCubic", function () {
+            re_drop(pot_element)
+        })
+    };
+    re_drop = function (element) {
+        let start_x = Math.random() * ($(document).width() - 150);
+        let height = $(document).height();
+        element.animate({"top": -100, "left": start_x}, 0, "easeInCubic", function () {
+            element.delay(Math.random() * 1000).animate({"top": height}, 2000, "easeInCubic", function () {
+                re_drop(element)
+            })
+        });
+    };
 </script>
-<div class="jumbotron">
-    <h2 <p class="text-left text-dark display-3"><strong>Machine Learning</strong></h2>
-    <p class="lead"><em>Machine learning is by far the most revolutionary field of computer science that there is to study
-        right now.</em></p>
+<div class="jumbotron" id="title" style="background-color: #4CAF50;" data-placement="right" data-toggle="tooltip"
+     title="Double Click Me">
+    <h2 class="text-left text-dark display-3"><strong>Machine Learning</strong></h2>
+    <p class="lead"><em>Machine learning is by far the most revolutionary field of computer science that there is to
+        study right now.</em></p>
 </div>
 <div class="card">
     <div class="card-body">
@@ -42,10 +82,11 @@
             <div class="col-sm">
                 <div class="card">
                     <div class="embed-responsive embed-responsive-16by9">
-						<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/JaxlrKV73HE" frameborder="0"
-                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen></iframe>
-					</div>
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/JaxlrKV73HE"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title">Tesla Driver Assist (Autopilot)</h5>
                         <p class="card-text">This video show the view from the cameras on a Tesla car. The overlays show
@@ -57,11 +98,12 @@
             </div>
             <div class="col-sm">
                 <div class="card">
-					<div class="embed-responsive embed-responsive-16by9">
-						<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/fRj34o4hN4I" frameborder="0"
-							allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen></iframe>
-					</div>
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/fRj34o4hN4I"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title">Boston Dynamics - Atlas</h5>
                         <p class="card-text">This video show a robot created by Boston Dynamics called Atlas. Though I
