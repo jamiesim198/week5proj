@@ -14,7 +14,9 @@
 <div id="header"></div>
 <script>
     $(function () { // This doesn't work unless it is hosted by a http server
-        $("#header").load("header.html");
+        $("#header").load("header.html", function(){
+            $("#kac").addClass("active")
+        });
     })
 </script>
 <div class="jumbotron">
@@ -63,7 +65,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Boston Dynamics - Atlas</h5>
                         <p class="card-text">This video show a robot created by Boston Dynamics called Atlas. Though I
-                            am not completly certain that this uses machine learning, I do assume that they do...
+                            am not completely certain that this uses machine learning, I do assume that they do...
                             Because let's be honest <strong>everything</strong> uses machine learning, and if it doesn't
                             then it should</p>
                     </div>
