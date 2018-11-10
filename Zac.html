@@ -79,37 +79,45 @@
             </div>
         </div>
 		<hr>
-		<div id='pot_div', title="🥔">
+		<div id='egg_div', title="...">
 			<script type="application/javascript">
-				var pot_active = false;
-				var pot_scale = 0.1;
-				var pot_offset = -40;
+				var egg_active = false;
+				var egg_scale_min = 0.05;
+				var egg_scale_max = 0.1;
+				var egg_angle = 0;
 				function setup() {
-					var pot_div = select('#pot_div');
-					var pot_canvas_width = pot_div.width;
-					img = loadImage("pot.png");  // Load the image
-					var pot_canvas = createCanvas(pot_canvas_width, 100);
-					pot_canvas.parent('pot_div');
-					pot_canvas.mousePressed(pot_toggle);
+					imageMode(CENTER);
+					var egg_div = select('#egg_div');
+					var egg_canvas_width = egg_div.width;
+					img = loadImage("lmc.png");  // Load the image
+					var egg_canvas = createCanvas(egg_canvas_width, 100);
+					egg_canvas.parent('egg_div');
+					egg_canvas.mousePressed(egg_toggle);
 				}
 				function draw() {
 					background(255, 75);
-					if (pot_active == true) {
-						image(img, mouseX+pot_offset, mouseY+pot_offset, img.width*pot_scale, img.height*pot_scale);
+					if (egg_active == true) {
+						egg_angle = egg_angle + 0.1;
+						egg_scale = (egg_scale_max - egg_scale_min) * (cos(egg_angle) + 1) + egg_scale_min;
+						push();
+						translate(mouseX, mouseY);
+						rotate(egg_angle);
+						image(img, 0, 0, img.width*egg_scale, img.height*egg_scale);
+						pop();
 					}
 				}
-				function pot_toggle() {
-					pot_active = !pot_active;
-					if (pot_active == true) {
+				function egg_toggle() {
+					egg_active = !egg_active;
+					if (egg_active == true) {
 						noCursor();
 					} else {
 						cursor(ARROW);
 					}
 				}
 				function windowResized() {
-					var pot_div = select('#pot_div');
-					var pot_canvas_width = pot_div.width;
-					resizeCanvas(pot_canvas_width, 100);
+					var egg_div = select('#egg_div');
+					var egg_canvas_width = egg_div.width;
+					resizeCanvas(egg_canvas_width, 100);
 				}
 			</script>
 		</div>
