@@ -9,6 +9,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 	<title>Zac's Page - Computational Science</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.dom.js"></script>
 </head>
 <body class="container">
 <div id="header"></div>
@@ -20,7 +22,7 @@
     })
 </script>
 <div class="jumbotron" style="background-color:#ccccff";>
-    <h2 class="text-left text-dark display-3"><strong>Machine Learning</strong></h2>
+    <h2 class="text-left text-dark display-3"><strong>Computational Science</strong></h2>
     <p class="lead"><em>Use of computer science to create models and simulations has paved
 		the way for considerable advancements in science and engineering.</em></p>
 </div>
@@ -77,7 +79,58 @@
             </div>
         </div>
 		<hr>
+		<div id='pot_div', title="🥔">
+			<script type="application/javascript">
+				var pot_active = false;
+				var pot_scale = 0.1;
+				var pot_offset = -40;
+				function setup() {
+					var pot_div = select('#pot_div');
+					var pot_canvas_width = pot_div.width;
+					img = loadImage("pot.png");  // Load the image
+					var pot_canvas = createCanvas(pot_canvas_width, 100);
+					pot_canvas.parent('pot_div');
+					pot_canvas.mousePressed(pot_toggle);
+				}
+				function draw() {
+					background(255, 75);
+					if (pot_active == true) {
+						image(img, mouseX+pot_offset, mouseY+pot_offset, img.width*pot_scale, img.height*pot_scale);
+					}
+				}
+				function pot_toggle() {
+					pot_active = !pot_active;
+					if (pot_active == true) {
+						noCursor();
+					} else {
+						cursor(ARROW);
+					}
+				}
+				function windowResized() {
+					var pot_div = select('#pot_div');
+					var pot_canvas_width = pot_div.width;
+					resizeCanvas(pot_canvas_width, 100);
+				}
+			</script>
+		</div>
 	</div>
 </div>
+<br>
+
+<!-- end script example -->
+<!--
+<script type="application/javascript">
+	var x = 0;
+	
+	function setup() {
+	background(100);  
+	}
+	
+	function draw() {
+	ellipse(x, height/2, 20, 20);
+	x = x + 1;
+	}
+</script>
+-->
 </body>
 </html>
