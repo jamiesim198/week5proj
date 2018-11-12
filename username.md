@@ -33,4 +33,6 @@ Not completed at the last minute
 - Excellent
 Only a minor bug fix right at the end which is fine.
 
+Final Comment
 Loved the Easter eggs and really liked the author pages having links to social media and github with the little logos!
+Just liked the website in general.
