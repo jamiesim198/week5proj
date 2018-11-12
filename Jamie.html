@@ -9,6 +9,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <title>Jamie's Page - Saving Our Planet</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/addons/p5.dom.js"></script>
 </head>
 <body class="container">
 <div id="header"></div>
@@ -23,6 +25,48 @@
     <h2 class="text-left text-dark display-3"><strong>Saving Our Planet</strong></h2>
     <p class="lead"><em>Computing has become and will remain an integral part in the process of trying to halt and revert
         the impacts we have had on our planet.</em></p>
+</div>
+<hr>
+<!--from Zac's page-->
+<div id='egg_div', title="...">
+    <script type="application/javascript">
+        var egg_active = false;
+        var egg_scale_min = 0.05;
+        var egg_scale_max = 0.1;
+        var egg_angle = 0;
+        function setup() {
+            imageMode(CENTER);
+            var egg_div = select('#egg_div');
+            var egg_canvas_width = egg_div.width;
+            img = loadImage("minionfart.jpg");  // Load the image
+            var egg_canvas = createCanvas(egg_canvas_width, 100);
+            egg_canvas.parent('egg_div');
+            egg_canvas.mousePressed(egg_toggle);
+        }
+        function draw() {
+            background(255, 75);
+            if (egg_active == true) {
+                egg_scale = 1
+                push();
+                translate(mouseX, mouseY);
+                image(img, 0, 0, img.width*egg_scale, img.height*egg_scale);
+                pop();
+            }
+        }
+        function egg_toggle() {
+            egg_active = !egg_active;
+            if (egg_active == true) {
+                noCursor();
+            } else {
+                cursor(ARROW);
+            }
+        }
+        function windowResized() {
+            var egg_div = select('#egg_div');
+            var egg_canvas_width = egg_div.width;
+            resizeCanvas(egg_canvas_width, 100);
+        }
+    </script>
 </div>
 <div class="card">
     <div class="card-body">
@@ -85,6 +129,5 @@
         technologies without demanding much more in the way of energy.</p>
     </div>
 </div>
-
 </body>
 </html>
