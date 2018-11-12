@@ -12,10 +12,10 @@ Only 1 fatal error was found by the HTML validator which is better than a lot of
 
 v) Evidence of Collaboration = Outstanding:
 
-    Author info not written by author = Outstanding
+   Author info not written by author = Outstanding
     
-    Balanced contributions from members = Excellent
-        Overall quite balanced, someone did do a lot more though
+   Balanced contributions from members = Excellent
+    Overall quite balanced, someone did do a lot more though
         
-    Not completed at the last minute = Exemplary
-        Most of it was written during the first programming practical
+   Not completed at the last minute = Exemplary
+    Most of it was written during the first programming practical
